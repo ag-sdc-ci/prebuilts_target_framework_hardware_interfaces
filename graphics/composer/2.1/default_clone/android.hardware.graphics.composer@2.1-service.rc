@@ -1,0 +1,9 @@
+service vendor.hwcomposer-2-1-clone /vendor/bin/hw/android.hardware.graphics.composer@2.1-service-clone
+    interface android.hardware.graphics.composer@2.1::IComposer default_clone
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    task_profiles ServiceCapacityLow
+    disabled

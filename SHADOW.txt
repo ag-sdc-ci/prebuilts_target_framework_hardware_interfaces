@@ -1,0 +1,5 @@
+upstream_repo: hardware/interfaces
+framework_extractive: true
+package: org.blisslabs.ag.ext.hardware.interfaces.framework
+source: https://android.googlesource.com/platform/hardware/interfaces
+build_type: extractive_apex
