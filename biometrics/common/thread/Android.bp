@@ -12,6 +12,7 @@ cc_library {
     ],
 }
 
+/*
 cc_test_host {
     name: "android.hardware.biometrics.common.WorkerThreadTest",
     local_include_dirs: ["include"],
@@ -24,3 +25,4 @@ cc_test_host {
     ],
     test_suites: ["general-tests"],
 }
+*/

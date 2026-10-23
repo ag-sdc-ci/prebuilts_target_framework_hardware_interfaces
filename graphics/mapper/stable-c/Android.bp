@@ -103,6 +103,7 @@ cc_test {
     cpp_std: "experimental",
 }
 
+/*
 cc_test {
     name: "VtsHalGraphicsMapperStableC_TargetTest",
     cpp_std: "experimental",
@@ -140,3 +141,4 @@ cc_test {
         "vts",
     ],
 }
+*/

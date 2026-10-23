@@ -22,7 +22,6 @@ aidl_interface {
             enabled: true,
             apex_available: [
                 "//apex_available:platform",
-                "com.android.compos",
             ],
         },
     },

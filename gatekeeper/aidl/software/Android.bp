@@ -55,6 +55,7 @@ prebuilt_etc {
     installable: false,
 }
 
+/*
 apex {
     name: "com.android.hardware.gatekeeper.nonsecure",
     binaries: ["android.hardware.gatekeeper-service.nonsecure"],
@@ -69,3 +70,4 @@ apex {
     updatable: false,
     vendor: true,
 }
+*/

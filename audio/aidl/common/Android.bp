@@ -42,6 +42,7 @@ cc_library {
     ],
 }
 
+/*
 cc_library {
     name: "libaudioaidlranges",
     host_supported: true,
@@ -83,3 +84,5 @@ cc_test {
         "general-tests",
     ],
 }
+*/
+

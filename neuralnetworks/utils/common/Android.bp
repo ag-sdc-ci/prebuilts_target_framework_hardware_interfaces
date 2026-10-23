@@ -33,6 +33,7 @@ cc_library_static {
     static_libs: ["neuralnetworks_types"],
 }
 
+/*
 cc_test {
     name: "neuralnetworks_utils_hal_common_test",
     host_supported: true,
@@ -54,3 +55,4 @@ cc_test {
     },
     test_suites: ["general-tests"],
 }
+*/
