@@ -16,7 +16,7 @@ cc_library_static {
         "gralloc1-adapter.cpp",
         "Gralloc1On0Adapter.cpp",
     ],
-    include_dirs: ["system/core/libsync/include"],
+    include_dirs: ["prebuilts/target/system/core/src/include/sync"],
     export_include_dirs: ["."],
     whole_static_libs: ["libgrallocusage"],
     shared_libs: [
