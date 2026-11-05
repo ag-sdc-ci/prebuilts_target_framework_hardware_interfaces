@@ -19,7 +19,7 @@ aidl_interface {
             enabled: true,
         },
         java: {
-            sdk_version: "module_current",
+            enabled: false,
         },
     },
     versions_with_info: [
@@ -87,7 +87,7 @@ aidl_interface {
             enabled: true,
         },
         java: {
-            sdk_version: "module_current",
+            enabled: false,
         },
     },
     versions_with_info: [
@@ -186,7 +186,7 @@ aidl_interface {
             enabled: true,
         },
         java: {
-            sdk_version: "module_current",
+            enabled: false,
         },
     },
     versions_with_info: [
@@ -292,7 +292,7 @@ aidl_interface {
             enabled: true,
         },
         java: {
-            sdk_version: "module_current",
+            enabled: false,
         },
     },
     versions_with_info: [

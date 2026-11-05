@@ -33,7 +33,7 @@ aidl_interface {
             enabled: true,
         },
         java: {
-            platform_apis: true,
+            enabled: false,
         },
         rust: {
             enabled: true,

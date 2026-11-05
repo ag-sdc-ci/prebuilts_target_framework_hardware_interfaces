@@ -29,3 +29,106 @@ cc_defaults {
         "-Werror",
     ],
 }
+
+// Pre-generated Java from AIDL — zero AIDL compilation at platform build time
+filegroup {
+    name: "android.hardware.graphics.common-V3-java-source",
+    srcs: ["aidl-gen/android.hardware.graphics.common-V3-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.graphics.common-V3-java-source",
+}
+
+filegroup {
+    name: "android.hardware.common-V2-java-source",
+    srcs: ["aidl-gen/android.hardware.common-V2-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.common-V2-java-source",
+}
+
+filegroup {
+    name: "android.hardware.common.fmq-V1-java-source",
+    srcs: ["aidl-gen/android.hardware.common.fmq-V1-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.common.fmq-V1-java-source",
+}
+
+filegroup {
+    name: "android.hardware.biometrics.common-V4-java-source",
+    srcs: ["aidl-gen/android.hardware.biometrics.common-V4-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.biometrics.common-V4-java-source",
+}
+
+filegroup {
+    name: "android.hardware.biometrics.fingerprint-V3-java-source",
+    srcs: ["aidl-gen/android.hardware.biometrics.fingerprint-V3-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.biometrics.fingerprint-V3-java-source",
+}
+
+filegroup {
+    name: "android.hardware.biometrics.face-V4-java-source",
+    srcs: ["aidl-gen/android.hardware.biometrics.face-V4-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.biometrics.face-V4-java-source",
+}
+
+filegroup {
+    name: "android.hardware.gnss-V2-java-source",
+    srcs: ["aidl-gen/android.hardware.gnss-V2-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.gnss-V2-java-source",
+}
+
+filegroup {
+    name: "android.hardware.keymaster-V4-java-source",
+    srcs: ["aidl-gen/android.hardware.keymaster-V4-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.keymaster-V4-java-source",
+}
+
+filegroup {
+    name: "android.hardware.security.secureclock-V1-java-source",
+    srcs: ["aidl-gen/android.hardware.security.secureclock-V1-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.security.secureclock-V1-java-source",
+}
+
+filegroup {
+    name: "android.hardware.security.keymint-V3-java-source",
+    srcs: ["aidl-gen/android.hardware.security.keymint-V3-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.security.keymint-V3-java-source",
+}
+
+filegroup {
+    name: "android.hardware.thermal-V2-java-source",
+    srcs: ["aidl-gen/android.hardware.thermal-V2-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.thermal-V2-java-source",
+}
+
+filegroup {
+    name: "android.hardware.tv.tuner-V2-java-source",
+    srcs: ["aidl-gen/android.hardware.tv.tuner-V2-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.tv.tuner-V2-java-source",
+}
+
+filegroup {
+    name: "android.hardware.cas-V1-java-source",
+    srcs: ["aidl-gen/android.hardware.cas-V1-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.cas-V1-java-source",
+}
+
+filegroup {
+    name: "android.hardware.radio-V3-java-source",
+    srcs: ["aidl-gen/android.hardware.radio-V3-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.radio-V3-java-source",
+}
+
+filegroup {
+    name: "android.hardware.radio.data-V3-java-source",
+    srcs: ["aidl-gen/android.hardware.radio.data-V3-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.radio.data-V3-java-source",
+}
+
+filegroup {
+    name: "android.hardware.radio.network-V3-java-source",
+    srcs: ["aidl-gen/android.hardware.radio.network-V3-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.radio.network-V3-java-source",
+}
+
+filegroup {
+    name: "android.hardware.radio.voice-V3-java-source",
+    srcs: ["aidl-gen/android.hardware.radio.voice-V3-java-source/**/*.java"],
+    path: "aidl-gen/android.hardware.radio.voice-V3-java-source",
+}
