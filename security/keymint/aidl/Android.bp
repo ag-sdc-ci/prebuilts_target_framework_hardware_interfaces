@@ -20,7 +20,7 @@ aidl_interface {
     frozen: true,
     backend: {
         java: {
-            enabled: false,
+            platform_apis: true,
         },
         ndk: {
             apps_enabled: false,

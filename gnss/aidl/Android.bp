@@ -34,7 +34,7 @@ aidl_interface {
     stability: "vintf",
     backend: {
         java: {
-            enabled: false,
+            platform_apis: true,
         },
     },
     versions_with_info: [
