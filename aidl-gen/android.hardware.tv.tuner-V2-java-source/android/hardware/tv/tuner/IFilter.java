@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.tv.tuner-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2/android/hardware/tv/tuner/IFilter.aidl
+ * Using: aidl --lang=java --version=2 --hash=f8d74c149f04e76b6d622db2bd8e465dae24b08c --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.tv.tuner-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2/android/hardware/tv/tuner/IFilter.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.tv.tuner;
 /** @hide */
 public interface IFilter extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 2;
+  public static final String HASH = "f8d74c149f04e76b6d622db2bd8e465dae24b08c";
   /** Default implementation for IFilter. */
   public static class Default implements android.hardware.tv.tuner.IFilter
   {
@@ -62,6 +70,14 @@ public interface IFilter extends android.os.IInterface
     {
     }
     @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
+    }
+    @Override
     public android.os.IBinder asBinder() {
       return null;
     }
@@ -99,6 +115,16 @@ public interface IFilter extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -240,6 +266,8 @@ public interface IFilter extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -255,6 +283,9 @@ public interface IFilter extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getQueueDesc, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getQueueDesc is unimplemented.");
+          }
           _reply.readException();
           if ((0!=_reply.readInt())) {
             queue.readFromParcel(_reply);
@@ -272,6 +303,9 @@ public interface IFilter extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_close, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method close is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -287,6 +321,9 @@ public interface IFilter extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(settings, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_configure, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method configure is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -302,6 +339,9 @@ public interface IFilter extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(avStreamType, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_configureAvStreamType, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method configureAvStreamType is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -317,6 +357,9 @@ public interface IFilter extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(ipCid);
           boolean _status = mRemote.transact(Stub.TRANSACTION_configureIpCid, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method configureIpCid is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -332,6 +375,9 @@ public interface IFilter extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(monitorEventTypes);
           boolean _status = mRemote.transact(Stub.TRANSACTION_configureMonitorEvent, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method configureMonitorEvent is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -346,6 +392,9 @@ public interface IFilter extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_start, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method start is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -360,6 +409,9 @@ public interface IFilter extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_stop, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method stop is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -374,6 +426,9 @@ public interface IFilter extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_flush, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method flush is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -389,6 +444,9 @@ public interface IFilter extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getAvSharedHandle, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getAvSharedHandle is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readLong();
           if ((0!=_reply.readInt())) {
@@ -409,6 +467,9 @@ public interface IFilter extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getId, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getId is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readInt();
         }
@@ -426,6 +487,9 @@ public interface IFilter extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getId64Bit, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getId64Bit is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readLong();
         }
@@ -444,6 +508,9 @@ public interface IFilter extends android.os.IInterface
           _data.writeTypedObject(avMemory, 0);
           _data.writeLong(avDataId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_releaseAvHandle, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method releaseAvHandle is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -459,6 +526,9 @@ public interface IFilter extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeStrongInterface(filter);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setDataSource, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setDataSource is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -474,12 +544,49 @@ public interface IFilter extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(hint, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setDelayHint, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setDelayHint is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
           _reply.recycle();
           _data.recycle();
         }
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_getQueueDesc = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -497,6 +604,8 @@ public interface IFilter extends android.os.IInterface
     static final int TRANSACTION_releaseAvHandle = (android.os.IBinder.FIRST_CALL_TRANSACTION + 12);
     static final int TRANSACTION_setDataSource = (android.os.IBinder.FIRST_CALL_TRANSACTION + 13);
     static final int TRANSACTION_setDelayHint = (android.os.IBinder.FIRST_CALL_TRANSACTION + 14);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$tv$tuner$IFilter".replace('$', '.');
@@ -515,4 +624,6 @@ public interface IFilter extends android.os.IInterface
   public void releaseAvHandle(android.hardware.common.NativeHandle avMemory, long avDataId) throws android.os.RemoteException;
   public void setDataSource(android.hardware.tv.tuner.IFilter filter) throws android.os.RemoteException;
   public void setDelayHint(android.hardware.tv.tuner.FilterDelayHint hint) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

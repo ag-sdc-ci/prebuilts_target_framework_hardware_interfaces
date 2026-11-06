@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.gnss-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/gnss/aidl/aidl_api/android.hardware.gnss/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/gnss/aidl/aidl_api/android.hardware.gnss/2/android/hardware/gnss/IGnssConfiguration.aidl
+ * Using: aidl --lang=java --version=2 --hash=fc957f1d3d261d065ff5e5415f2d21caa79c310f --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.gnss-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/gnss/aidl/aidl_api/android.hardware.gnss/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/gnss/aidl/aidl_api/android.hardware.gnss/2/android/hardware/gnss/IGnssConfiguration.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.gnss;
 /** @hide */
 public interface IGnssConfiguration extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 2;
+  public static final String HASH = "fc957f1d3d261d065ff5e5415f2d21caa79c310f";
   /** Default implementation for IGnssConfiguration. */
   public static class Default implements android.hardware.gnss.IGnssConfiguration
   {
@@ -33,6 +41,14 @@ public interface IGnssConfiguration extends android.os.IInterface
     }
     @Override public void setBlocklist(android.hardware.gnss.BlocklistedSource[] blocklist) throws android.os.RemoteException
     {
+    }
+    @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
     }
     @Override
     public android.os.IBinder asBinder() {
@@ -72,6 +88,16 @@ public interface IGnssConfiguration extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -152,6 +178,8 @@ public interface IGnssConfiguration extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -168,6 +196,9 @@ public interface IGnssConfiguration extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(version);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setSuplVersion, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setSuplVersion is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -183,6 +214,9 @@ public interface IGnssConfiguration extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(mode);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setSuplMode, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setSuplMode is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -198,6 +232,9 @@ public interface IGnssConfiguration extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(lppProfile);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setLppProfile, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setLppProfile is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -213,6 +250,9 @@ public interface IGnssConfiguration extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(protocol);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setGlonassPositioningProtocol, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setGlonassPositioningProtocol is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -228,6 +268,9 @@ public interface IGnssConfiguration extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeBoolean(enable);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setEmergencySuplPdn, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setEmergencySuplPdn is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -243,6 +286,9 @@ public interface IGnssConfiguration extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(emergencyExtensionSeconds);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setEsExtensionSec, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setEsExtensionSec is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -258,12 +304,49 @@ public interface IGnssConfiguration extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedArray(blocklist, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setBlocklist, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setBlocklist is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
           _reply.recycle();
           _data.recycle();
         }
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_setSuplVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -273,6 +356,8 @@ public interface IGnssConfiguration extends android.os.IInterface
     static final int TRANSACTION_setEmergencySuplPdn = (android.os.IBinder.FIRST_CALL_TRANSACTION + 4);
     static final int TRANSACTION_setEsExtensionSec = (android.os.IBinder.FIRST_CALL_TRANSACTION + 5);
     static final int TRANSACTION_setBlocklist = (android.os.IBinder.FIRST_CALL_TRANSACTION + 6);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$gnss$IGnssConfiguration".replace('$', '.');
@@ -290,4 +375,6 @@ public interface IGnssConfiguration extends android.os.IInterface
   public void setEmergencySuplPdn(boolean enable) throws android.os.RemoteException;
   public void setEsExtensionSec(int emergencyExtensionSeconds) throws android.os.RemoteException;
   public void setBlocklist(android.hardware.gnss.BlocklistedSource[] blocklist) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

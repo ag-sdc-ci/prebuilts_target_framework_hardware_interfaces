@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.radio.voice-V3-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.voice/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.voice/3/android/hardware/radio/voice/IRadioVoiceResponse.aidl
+ * Using: aidl --lang=java --version=3 --hash=78fb79bcb32590a868b3eb7affb39ab90e4ca782 --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.radio.voice-V3-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.voice/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.voice/3/android/hardware/radio/voice/IRadioVoiceResponse.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.radio.voice;
 /** @hide */
 public interface IRadioVoiceResponse extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 3;
+  public static final String HASH = "78fb79bcb32590a868b3eb7affb39ab90e4ca782";
   /** Default implementation for IRadioVoiceResponse. */
   public static class Default implements android.hardware.radio.voice.IRadioVoiceResponse
   {
@@ -128,6 +136,14 @@ public interface IRadioVoiceResponse extends android.os.IInterface
     {
     }
     @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
+    }
+    @Override
     public android.os.IBinder asBinder() {
       return null;
     }
@@ -165,6 +181,16 @@ public interface IRadioVoiceResponse extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -510,6 +536,8 @@ public interface IRadioVoiceResponse extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -525,6 +553,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_acceptCallResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method acceptCallResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -537,6 +568,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_acknowledgeRequest, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method acknowledgeRequest is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -549,6 +583,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_cancelPendingUssdResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method cancelPendingUssdResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -561,6 +598,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_conferenceResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method conferenceResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -573,6 +613,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_dialResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method dialResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -585,6 +628,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_emergencyDialResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method emergencyDialResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -597,6 +643,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_exitEmergencyCallbackModeResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method exitEmergencyCallbackModeResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -609,6 +658,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_explicitCallTransferResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method explicitCallTransferResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -622,6 +674,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeTypedObject(info, 0);
           _data.writeTypedArray(callForwardInfos, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getCallForwardStatusResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getCallForwardStatusResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -636,6 +691,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeBoolean(enable);
           _data.writeInt(serviceClass);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getCallWaitingResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getCallWaitingResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -649,6 +707,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeTypedObject(info, 0);
           _data.writeInt(status);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getClipResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getClipResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -663,6 +724,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInt(n);
           _data.writeInt(m);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getClirResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getClirResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -676,6 +740,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeTypedObject(info, 0);
           _data.writeTypedArray(calls, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getCurrentCallsResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getCurrentCallsResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -689,6 +756,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeTypedObject(info, 0);
           _data.writeTypedObject(failCauseinfo, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getLastCallFailCauseResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getLastCallFailCauseResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -702,6 +772,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeTypedObject(info, 0);
           _data.writeBoolean(enable);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getMuteResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getMuteResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -715,6 +788,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeTypedObject(info, 0);
           _data.writeBoolean(enable);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getPreferredVoicePrivacyResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getPreferredVoicePrivacyResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -728,6 +804,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeTypedObject(info, 0);
           _data.writeInt(mode);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getTtyModeResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getTtyModeResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -740,6 +819,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_handleStkCallSetupRequestFromSimResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method handleStkCallSetupRequestFromSimResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -752,6 +834,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_hangupConnectionResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method hangupConnectionResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -764,6 +849,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_hangupForegroundResumeBackgroundResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method hangupForegroundResumeBackgroundResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -776,6 +864,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_hangupWaitingOrBackgroundResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method hangupWaitingOrBackgroundResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -789,6 +880,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeTypedObject(info, 0);
           _data.writeBoolean(enable);
           boolean _status = mRemote.transact(Stub.TRANSACTION_isVoNrEnabledResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method isVoNrEnabledResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -801,6 +895,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_rejectCallResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method rejectCallResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -813,6 +910,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_sendBurstDtmfResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method sendBurstDtmfResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -825,6 +925,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_sendCdmaFeatureCodeResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method sendCdmaFeatureCodeResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -837,6 +940,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_sendDtmfResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method sendDtmfResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -849,6 +955,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_sendUssdResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method sendUssdResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -861,6 +970,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_separateConnectionResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method separateConnectionResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -873,6 +985,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setCallForwardResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setCallForwardResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -885,6 +1000,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setCallWaitingResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setCallWaitingResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -897,6 +1015,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setClirResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setClirResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -909,6 +1030,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setMuteResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setMuteResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -921,6 +1045,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setPreferredVoicePrivacyResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setPreferredVoicePrivacyResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -933,6 +1060,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setTtyModeResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setTtyModeResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -945,6 +1075,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setVoNrEnabledResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setVoNrEnabledResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -957,6 +1090,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_startDtmfResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method startDtmfResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -969,6 +1105,9 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_stopDtmfResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method stopDtmfResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -981,10 +1120,47 @@ public interface IRadioVoiceResponse extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(info, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_switchWaitingOrHoldingAndActiveResponse, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method switchWaitingOrHoldingAndActiveResponse is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
         }
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_acceptCallResponse = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -1025,6 +1201,8 @@ public interface IRadioVoiceResponse extends android.os.IInterface
     static final int TRANSACTION_startDtmfResponse = (android.os.IBinder.FIRST_CALL_TRANSACTION + 35);
     static final int TRANSACTION_stopDtmfResponse = (android.os.IBinder.FIRST_CALL_TRANSACTION + 36);
     static final int TRANSACTION_switchWaitingOrHoldingAndActiveResponse = (android.os.IBinder.FIRST_CALL_TRANSACTION + 37);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$radio$voice$IRadioVoiceResponse".replace('$', '.');
@@ -1066,4 +1244,6 @@ public interface IRadioVoiceResponse extends android.os.IInterface
   public void startDtmfResponse(android.hardware.radio.RadioResponseInfo info) throws android.os.RemoteException;
   public void stopDtmfResponse(android.hardware.radio.RadioResponseInfo info) throws android.os.RemoteException;
   public void switchWaitingOrHoldingAndActiveResponse(android.hardware.radio.RadioResponseInfo info) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

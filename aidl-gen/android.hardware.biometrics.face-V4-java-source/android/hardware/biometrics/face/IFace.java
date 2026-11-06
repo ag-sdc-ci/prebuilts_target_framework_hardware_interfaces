@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.biometrics.face-V4-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/face/aidl/aidl_api/android.hardware.biometrics.face/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/face/aidl/aidl_api/android.hardware.biometrics.face/4/android/hardware/biometrics/face/IFace.aidl
+ * Using: aidl --lang=java --version=4 --hash=c43fbb9be4a662cc9ace640dba21cccdb84c6c21 --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.biometrics.face-V4-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/face/aidl/aidl_api/android.hardware.biometrics.face/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/face/aidl/aidl_api/android.hardware.biometrics.face/4/android/hardware/biometrics/face/IFace.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.biometrics.face;
 /** @hide */
 public interface IFace extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 4;
+  public static final String HASH = "c43fbb9be4a662cc9ace640dba21cccdb84c6c21";
   /** Default implementation for IFace. */
   public static class Default implements android.hardware.biometrics.face.IFace
   {
@@ -20,6 +28,14 @@ public interface IFace extends android.os.IInterface
     @Override public android.hardware.biometrics.face.ISession createSession(int sensorId, int userId, android.hardware.biometrics.face.ISessionCallback cb) throws android.os.RemoteException
     {
       return null;
+    }
+    @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
     }
     @Override
     public android.os.IBinder asBinder() {
@@ -60,6 +76,16 @@ public interface IFace extends android.os.IInterface
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
       }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
+      }
       switch (code)
       {
         case TRANSACTION_getSensorProps:
@@ -97,6 +123,8 @@ public interface IFace extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -113,6 +141,9 @@ public interface IFace extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getSensorProps, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getSensorProps is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createTypedArray(android.hardware.biometrics.face.SensorProps.CREATOR);
         }
@@ -133,6 +164,9 @@ public interface IFace extends android.os.IInterface
           _data.writeInt(userId);
           _data.writeStrongInterface(cb);
           boolean _status = mRemote.transact(Stub.TRANSACTION_createSession, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method createSession is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.biometrics.face.ISession.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -142,12 +176,50 @@ public interface IFace extends android.os.IInterface
         }
         return _result;
       }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
+      }
     }
     static final int TRANSACTION_getSensorProps = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
     static final int TRANSACTION_createSession = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$biometrics$face$IFace".replace('$', '.');
   public android.hardware.biometrics.face.SensorProps[] getSensorProps() throws android.os.RemoteException;
   public android.hardware.biometrics.face.ISession createSession(int sensorId, int userId, android.hardware.biometrics.face.ISessionCallback cb) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

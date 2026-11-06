@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.cas-V1-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/cas/aidl/aidl_api/android.hardware.cas/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/cas/aidl/aidl_api/android.hardware.cas/1/android/hardware/cas/IDescrambler.aidl
+ * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 --version 1 --hash bc51d8d70a55ec4723d3f73d0acf7003306bf69f -o prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.cas-V1-java-source -Iprebuilts/target/framework/hardware/interfaces/cas/aidl/aidl_api/android.hardware.cas/1 -Iprebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -Iprebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 prebuilts/target/framework/hardware/interfaces/cas/aidl/aidl_api/android.hardware.cas/1/android/hardware/cas/IDescrambler.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.cas;
 /** @hide */
 public interface IDescrambler extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 1;
+  public static final String HASH = "bc51d8d70a55ec4723d3f73d0acf7003306bf69f";
   /** Default implementation for IDescrambler. */
   public static class Default implements android.hardware.cas.IDescrambler
   {
@@ -26,6 +34,14 @@ public interface IDescrambler extends android.os.IInterface
     }
     @Override public void setMediaCasSession(byte[] sessionId) throws android.os.RemoteException
     {
+    }
+    @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
     }
     @Override
     public android.os.IBinder asBinder() {
@@ -65,6 +81,16 @@ public interface IDescrambler extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -127,6 +153,8 @@ public interface IDescrambler extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -149,6 +177,9 @@ public interface IDescrambler extends android.os.IInterface
           _data.writeTypedObject(dstBuffer, 0);
           _data.writeLong(dstOffset);
           boolean _status = mRemote.transact(Stub.TRANSACTION_descramble, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method descramble is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readInt();
         }
@@ -165,6 +196,9 @@ public interface IDescrambler extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_release, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method release is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -181,6 +215,9 @@ public interface IDescrambler extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeString(mime);
           boolean _status = mRemote.transact(Stub.TRANSACTION_requiresSecureDecoderComponent, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method requiresSecureDecoderComponent is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readBoolean();
         }
@@ -198,6 +235,9 @@ public interface IDescrambler extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeByteArray(sessionId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setMediaCasSession, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setMediaCasSession is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -205,11 +245,47 @@ public interface IDescrambler extends android.os.IInterface
           _data.recycle();
         }
       }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
+      }
     }
     static final int TRANSACTION_descramble = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
     static final int TRANSACTION_release = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
     static final int TRANSACTION_requiresSecureDecoderComponent = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
     static final int TRANSACTION_setMediaCasSession = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$cas$IDescrambler".replace('$', '.');
@@ -217,4 +293,6 @@ public interface IDescrambler extends android.os.IInterface
   public void release() throws android.os.RemoteException;
   public boolean requiresSecureDecoderComponent(java.lang.String mime) throws android.os.RemoteException;
   public void setMediaCasSession(byte[] sessionId) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

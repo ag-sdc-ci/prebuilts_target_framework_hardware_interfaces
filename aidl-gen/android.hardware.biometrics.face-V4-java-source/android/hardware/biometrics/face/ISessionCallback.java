@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.biometrics.face-V4-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/face/aidl/aidl_api/android.hardware.biometrics.face/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/face/aidl/aidl_api/android.hardware.biometrics.face/4/android/hardware/biometrics/face/ISessionCallback.aidl
+ * Using: aidl --lang=java --version=4 --hash=c43fbb9be4a662cc9ace640dba21cccdb84c6c21 --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.biometrics.face-V4-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/face/aidl/aidl_api/android.hardware.biometrics.face/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/face/aidl/aidl_api/android.hardware.biometrics.face/4/android/hardware/biometrics/face/ISessionCallback.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.biometrics.face;
 /** @hide */
 public interface ISessionCallback extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 4;
+  public static final String HASH = "c43fbb9be4a662cc9ace640dba21cccdb84c6c21";
   /** Default implementation for ISessionCallback. */
   public static class Default implements android.hardware.biometrics.face.ISessionCallback
   {
@@ -71,6 +79,14 @@ public interface ISessionCallback extends android.os.IInterface
     {
     }
     @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
+    }
+    @Override
     public android.os.IBinder asBinder() {
       return null;
     }
@@ -108,6 +124,16 @@ public interface ISessionCallback extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -287,6 +313,8 @@ public interface ISessionCallback extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -303,6 +331,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeLong(challenge);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onChallengeGenerated, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onChallengeGenerated is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -318,6 +349,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeLong(challenge);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onChallengeRevoked, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onChallengeRevoked is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -333,6 +367,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(frame, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onAuthenticationFrame, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onAuthenticationFrame is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -348,6 +385,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(frame, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onEnrollmentFrame, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onEnrollmentFrame is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -364,6 +404,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeByte(error);
           _data.writeInt(vendorCode);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onError, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onError is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -380,6 +423,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInt(enrollmentId);
           _data.writeInt(remaining);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onEnrollmentProgress, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onEnrollmentProgress is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -396,6 +442,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInt(enrollmentId);
           _data.writeTypedObject(hat, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onAuthenticationSucceeded, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onAuthenticationSucceeded is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -410,6 +459,9 @@ public interface ISessionCallback extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onAuthenticationFailed, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onAuthenticationFailed is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -425,6 +477,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeLong(durationMillis);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onLockoutTimed, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onLockoutTimed is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -439,6 +494,9 @@ public interface ISessionCallback extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onLockoutPermanent, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onLockoutPermanent is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -453,6 +511,9 @@ public interface ISessionCallback extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onLockoutCleared, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onLockoutCleared is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -467,6 +528,9 @@ public interface ISessionCallback extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onInteractionDetected, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onInteractionDetected is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -482,6 +546,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeIntArray(enrollmentIds);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onEnrollmentsEnumerated, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onEnrollmentsEnumerated is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -497,6 +564,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeByteArray(features);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onFeaturesRetrieved, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onFeaturesRetrieved is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -512,6 +582,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeByte(feature);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onFeatureSet, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onFeatureSet is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -527,6 +600,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeIntArray(enrollmentIds);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onEnrollmentsRemoved, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onEnrollmentsRemoved is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -542,6 +618,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeLong(authenticatorId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onAuthenticatorIdRetrieved, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onAuthenticatorIdRetrieved is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -557,6 +636,9 @@ public interface ISessionCallback extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeLong(newAuthenticatorId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onAuthenticatorIdInvalidated, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onAuthenticatorIdInvalidated is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -571,12 +653,49 @@ public interface ISessionCallback extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onSessionClosed, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onSessionClosed is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
           _reply.recycle();
           _data.recycle();
         }
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_onChallengeGenerated = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -598,6 +717,8 @@ public interface ISessionCallback extends android.os.IInterface
     static final int TRANSACTION_onAuthenticatorIdRetrieved = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16);
     static final int TRANSACTION_onAuthenticatorIdInvalidated = (android.os.IBinder.FIRST_CALL_TRANSACTION + 17);
     static final int TRANSACTION_onSessionClosed = (android.os.IBinder.FIRST_CALL_TRANSACTION + 18);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$biometrics$face$ISessionCallback".replace('$', '.');
@@ -620,4 +741,6 @@ public interface ISessionCallback extends android.os.IInterface
   public void onAuthenticatorIdRetrieved(long authenticatorId) throws android.os.RemoteException;
   public void onAuthenticatorIdInvalidated(long newAuthenticatorId) throws android.os.RemoteException;
   public void onSessionClosed() throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

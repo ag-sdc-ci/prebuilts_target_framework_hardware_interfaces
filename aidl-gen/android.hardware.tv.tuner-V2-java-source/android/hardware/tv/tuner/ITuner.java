@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.tv.tuner-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2/android/hardware/tv/tuner/ITuner.aidl
+ * Using: aidl --lang=java --version=2 --hash=f8d74c149f04e76b6d622db2bd8e465dae24b08c --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.tv.tuner-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2/android/hardware/tv/tuner/ITuner.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.tv.tuner;
 /** @hide */
 public interface ITuner extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 2;
+  public static final String HASH = "f8d74c149f04e76b6d622db2bd8e465dae24b08c";
   /** Default implementation for ITuner. */
   public static class Default implements android.hardware.tv.tuner.ITuner
   {
@@ -76,6 +84,14 @@ public interface ITuner extends android.os.IInterface
       return null;
     }
     @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
+    }
+    @Override
     public android.os.IBinder asBinder() {
       return null;
     }
@@ -113,6 +129,16 @@ public interface ITuner extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -290,6 +316,8 @@ public interface ITuner extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -306,6 +334,9 @@ public interface ITuner extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getFrontendIds, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getFrontendIds is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createIntArray();
         }
@@ -324,6 +355,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(frontendId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_openFrontendById, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method openFrontendById is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.tv.tuner.IFrontend.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -342,6 +376,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(demuxId.length);
           boolean _status = mRemote.transact(Stub.TRANSACTION_openDemux, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method openDemux is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.tv.tuner.IDemux.Stub.asInterface(_reply.readStrongBinder());
           _reply.readIntArray(demuxId);
@@ -360,6 +397,9 @@ public interface ITuner extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getDemuxCaps, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getDemuxCaps is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readTypedObject(android.hardware.tv.tuner.DemuxCapabilities.CREATOR);
         }
@@ -377,6 +417,9 @@ public interface ITuner extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_openDescrambler, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method openDescrambler is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.tv.tuner.IDescrambler.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -395,6 +438,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(frontendId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getFrontendInfo, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getFrontendInfo is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readTypedObject(android.hardware.tv.tuner.FrontendInfo.CREATOR);
         }
@@ -412,6 +458,9 @@ public interface ITuner extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getLnbIds, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getLnbIds is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createIntArray();
         }
@@ -430,6 +479,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(lnbId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_openLnbById, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method openLnbById is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.tv.tuner.ILnb.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -449,6 +501,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeString(lnbName);
           _data.writeInt(lnbId.length);
           boolean _status = mRemote.transact(Stub.TRANSACTION_openLnbByName, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method openLnbByName is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.tv.tuner.ILnb.Stub.asInterface(_reply.readStrongBinder());
           _reply.readIntArray(lnbId);
@@ -467,6 +522,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeBoolean(bEnable);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setLna, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setLna is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -483,6 +541,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeInt(frontendType);
           _data.writeInt(maxNumber);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setMaxNumberOfFrontends, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setMaxNumberOfFrontends is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -499,6 +560,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(frontendType);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getMaxNumberOfFrontends, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getMaxNumberOfFrontends is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readInt();
         }
@@ -516,6 +580,9 @@ public interface ITuner extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_isLnaSupported, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method isLnaSupported is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readBoolean();
         }
@@ -533,6 +600,9 @@ public interface ITuner extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getDemuxIds, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getDemuxIds is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createIntArray();
         }
@@ -551,6 +621,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(demuxId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_openDemuxById, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method openDemuxById is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.tv.tuner.IDemux.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -569,6 +642,9 @@ public interface ITuner extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(demuxId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getDemuxInfo, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getDemuxInfo is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readTypedObject(android.hardware.tv.tuner.DemuxInfo.CREATOR);
         }
@@ -577,6 +653,40 @@ public interface ITuner extends android.os.IInterface
           _data.recycle();
         }
         return _result;
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_getFrontendIds = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -595,6 +705,8 @@ public interface ITuner extends android.os.IInterface
     static final int TRANSACTION_getDemuxIds = (android.os.IBinder.FIRST_CALL_TRANSACTION + 13);
     static final int TRANSACTION_openDemuxById = (android.os.IBinder.FIRST_CALL_TRANSACTION + 14);
     static final int TRANSACTION_getDemuxInfo = (android.os.IBinder.FIRST_CALL_TRANSACTION + 15);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$tv$tuner$ITuner".replace('$', '.');
@@ -614,4 +726,6 @@ public interface ITuner extends android.os.IInterface
   public int[] getDemuxIds() throws android.os.RemoteException;
   public android.hardware.tv.tuner.IDemux openDemuxById(int demuxId) throws android.os.RemoteException;
   public android.hardware.tv.tuner.DemuxInfo getDemuxInfo(int demuxId) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.radio.data-V3-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.data/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.data/3/android/hardware/radio/data/IRadioDataIndication.aidl
+ * Using: aidl --lang=java --version=3 --hash=cd8913a3f9d39f1cc0a5fcf9e90257be94ec38df --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.radio.data-V3-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.data/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.data/3/android/hardware/radio/data/IRadioDataIndication.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.radio.data;
 /** @hide */
 public interface IRadioDataIndication extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 3;
+  public static final String HASH = "cd8913a3f9d39f1cc0a5fcf9e90257be94ec38df";
   /** Default implementation for IRadioDataIndication. */
   public static class Default implements android.hardware.radio.data.IRadioDataIndication
   {
@@ -27,6 +35,14 @@ public interface IRadioDataIndication extends android.os.IInterface
     }
     @Override public void slicingConfigChanged(int type, android.hardware.radio.data.SlicingConfig slicingConfig) throws android.os.RemoteException
     {
+    }
+    @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
     }
     @Override
     public android.os.IBinder asBinder() {
@@ -66,6 +82,16 @@ public interface IRadioDataIndication extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -133,6 +159,8 @@ public interface IRadioDataIndication extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -149,6 +177,9 @@ public interface IRadioDataIndication extends android.os.IInterface
           _data.writeInt(type);
           _data.writeTypedArray(dcList, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_dataCallListChanged, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method dataCallListChanged is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -162,6 +193,9 @@ public interface IRadioDataIndication extends android.os.IInterface
           _data.writeInt(type);
           _data.writeTypedObject(status, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_keepaliveStatus, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method keepaliveStatus is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -175,6 +209,9 @@ public interface IRadioDataIndication extends android.os.IInterface
           _data.writeInt(type);
           _data.writeTypedObject(pco, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_pcoData, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method pcoData is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -188,6 +225,9 @@ public interface IRadioDataIndication extends android.os.IInterface
           _data.writeInt(type);
           _data.writeTypedObject(dataProfileInfo, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_unthrottleApn, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method unthrottleApn is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -201,10 +241,47 @@ public interface IRadioDataIndication extends android.os.IInterface
           _data.writeInt(type);
           _data.writeTypedObject(slicingConfig, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_slicingConfigChanged, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method slicingConfigChanged is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
         }
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_dataCallListChanged = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -212,6 +289,8 @@ public interface IRadioDataIndication extends android.os.IInterface
     static final int TRANSACTION_pcoData = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
     static final int TRANSACTION_unthrottleApn = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
     static final int TRANSACTION_slicingConfigChanged = (android.os.IBinder.FIRST_CALL_TRANSACTION + 4);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$radio$data$IRadioDataIndication".replace('$', '.');
@@ -220,4 +299,6 @@ public interface IRadioDataIndication extends android.os.IInterface
   public void pcoData(int type, android.hardware.radio.data.PcoDataInfo pco) throws android.os.RemoteException;
   public void unthrottleApn(int type, android.hardware.radio.data.DataProfileInfo dataProfileInfo) throws android.os.RemoteException;
   public void slicingConfigChanged(int type, android.hardware.radio.data.SlicingConfig slicingConfig) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

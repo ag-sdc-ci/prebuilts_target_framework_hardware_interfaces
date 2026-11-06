@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.tv.tuner-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2/android/hardware/tv/tuner/IDemux.aidl
+ * Using: aidl --lang=java --version=2 --hash=f8d74c149f04e76b6d622db2bd8e465dae24b08c --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.tv.tuner-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/tv/tuner/aidl/aidl_api/android.hardware.tv.tuner/2/android/hardware/tv/tuner/IDemux.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.tv.tuner;
 /** @hide */
 public interface IDemux extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 2;
+  public static final String HASH = "f8d74c149f04e76b6d622db2bd8e465dae24b08c";
   /** Default implementation for IDemux. */
   public static class Default implements android.hardware.tv.tuner.IDemux
   {
@@ -44,6 +52,14 @@ public interface IDemux extends android.os.IInterface
     }
     @Override public void disconnectCiCam() throws android.os.RemoteException
     {
+    }
+    @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
     }
     @Override
     public android.os.IBinder asBinder() {
@@ -83,6 +99,16 @@ public interface IDemux extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -185,6 +211,8 @@ public interface IDemux extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -201,6 +229,9 @@ public interface IDemux extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(frontendId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setFrontendDataSource, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setFrontendDataSource is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -219,6 +250,9 @@ public interface IDemux extends android.os.IInterface
           _data.writeInt(bufferSize);
           _data.writeStrongInterface(cb);
           boolean _status = mRemote.transact(Stub.TRANSACTION_openFilter, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method openFilter is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.tv.tuner.IFilter.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -236,6 +270,9 @@ public interface IDemux extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_openTimeFilter, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method openTimeFilter is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.tv.tuner.ITimeFilter.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -254,6 +291,9 @@ public interface IDemux extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeStrongInterface(filter);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getAvSyncHwId, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getAvSyncHwId is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readInt();
         }
@@ -272,6 +312,9 @@ public interface IDemux extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(avSyncHwId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getAvSyncTime, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getAvSyncTime is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.readLong();
         }
@@ -288,6 +331,9 @@ public interface IDemux extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_close, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method close is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -306,6 +352,9 @@ public interface IDemux extends android.os.IInterface
           _data.writeInt(bufferSize);
           _data.writeStrongInterface(cb);
           boolean _status = mRemote.transact(Stub.TRANSACTION_openDvr, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method openDvr is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.tv.tuner.IDvr.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -323,6 +372,9 @@ public interface IDemux extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(ciCamId);
           boolean _status = mRemote.transact(Stub.TRANSACTION_connectCiCam, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method connectCiCam is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -337,12 +389,49 @@ public interface IDemux extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_disconnectCiCam, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method disconnectCiCam is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
           _reply.recycle();
           _data.recycle();
         }
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_setFrontendDataSource = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -354,6 +443,8 @@ public interface IDemux extends android.os.IInterface
     static final int TRANSACTION_openDvr = (android.os.IBinder.FIRST_CALL_TRANSACTION + 6);
     static final int TRANSACTION_connectCiCam = (android.os.IBinder.FIRST_CALL_TRANSACTION + 7);
     static final int TRANSACTION_disconnectCiCam = (android.os.IBinder.FIRST_CALL_TRANSACTION + 8);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$tv$tuner$IDemux".replace('$', '.');
@@ -366,4 +457,6 @@ public interface IDemux extends android.os.IInterface
   public android.hardware.tv.tuner.IDvr openDvr(byte type, int bufferSize, android.hardware.tv.tuner.IDvrCallback cb) throws android.os.RemoteException;
   public void connectCiCam(int ciCamId) throws android.os.RemoteException;
   public void disconnectCiCam() throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

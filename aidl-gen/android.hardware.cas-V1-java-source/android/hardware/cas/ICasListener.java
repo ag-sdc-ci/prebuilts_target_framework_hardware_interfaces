@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.cas-V1-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/cas/aidl/aidl_api/android.hardware.cas/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/cas/aidl/aidl_api/android.hardware.cas/1/android/hardware/cas/ICasListener.aidl
+ * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 --version 1 --hash bc51d8d70a55ec4723d3f73d0acf7003306bf69f -o prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.cas-V1-java-source -Iprebuilts/target/framework/hardware/interfaces/cas/aidl/aidl_api/android.hardware.cas/1 -Iprebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -Iprebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 prebuilts/target/framework/hardware/interfaces/cas/aidl/aidl_api/android.hardware.cas/1/android/hardware/cas/ICasListener.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.cas;
 /** @hide */
 public interface ICasListener extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 1;
+  public static final String HASH = "bc51d8d70a55ec4723d3f73d0acf7003306bf69f";
   /** Default implementation for ICasListener. */
   public static class Default implements android.hardware.cas.ICasListener
   {
@@ -21,6 +29,14 @@ public interface ICasListener extends android.os.IInterface
     }
     @Override public void onStatusUpdate(byte event, int number) throws android.os.RemoteException
     {
+    }
+    @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
     }
     @Override
     public android.os.IBinder asBinder() {
@@ -60,6 +76,16 @@ public interface ICasListener extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -116,6 +142,8 @@ public interface ICasListener extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -134,6 +162,9 @@ public interface ICasListener extends android.os.IInterface
           _data.writeInt(arg);
           _data.writeByteArray(data);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onEvent, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onEvent is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -152,6 +183,9 @@ public interface ICasListener extends android.os.IInterface
           _data.writeInt(arg);
           _data.writeByteArray(data);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onSessionEvent, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onSessionEvent is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -168,6 +202,9 @@ public interface ICasListener extends android.os.IInterface
           _data.writeByte(event);
           _data.writeInt(number);
           boolean _status = mRemote.transact(Stub.TRANSACTION_onStatusUpdate, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method onStatusUpdate is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -175,14 +212,52 @@ public interface ICasListener extends android.os.IInterface
           _data.recycle();
         }
       }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
+      }
     }
     static final int TRANSACTION_onEvent = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
     static final int TRANSACTION_onSessionEvent = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
     static final int TRANSACTION_onStatusUpdate = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$cas$ICasListener".replace('$', '.');
   public void onEvent(int event, int arg, byte[] data) throws android.os.RemoteException;
   public void onSessionEvent(byte[] sessionId, int event, int arg, byte[] data) throws android.os.RemoteException;
   public void onStatusUpdate(byte event, int number) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

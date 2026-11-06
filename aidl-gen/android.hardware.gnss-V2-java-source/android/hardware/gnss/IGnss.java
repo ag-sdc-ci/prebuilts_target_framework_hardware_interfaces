@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.gnss-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/gnss/aidl/aidl_api/android.hardware.gnss/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/gnss/aidl/aidl_api/android.hardware.gnss/2/android/hardware/gnss/IGnss.aidl
+ * Using: aidl --lang=java --version=2 --hash=fc957f1d3d261d065ff5e5415f2d21caa79c310f --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.gnss-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/gnss/aidl/aidl_api/android.hardware.gnss/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/gnss/aidl/aidl_api/android.hardware.gnss/2/android/hardware/gnss/IGnss.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.gnss;
 /** @hide */
 public interface IGnss extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 2;
+  public static final String HASH = "fc957f1d3d261d065ff5e5415f2d21caa79c310f";
   /** Default implementation for IGnss. */
   public static class Default implements android.hardware.gnss.IGnss
   {
@@ -105,6 +113,14 @@ public interface IGnss extends android.os.IInterface
     {
     }
     @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
+    }
+    @Override
     public android.os.IBinder asBinder() {
       return null;
     }
@@ -142,6 +158,16 @@ public interface IGnss extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -350,6 +376,8 @@ public interface IGnss extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -366,6 +394,9 @@ public interface IGnss extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeStrongInterface(callback);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setCallback, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setCallback is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -380,6 +411,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_close, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method close is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -395,6 +429,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionPsds, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionPsds is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IGnssPsds.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -412,6 +449,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionGnssConfiguration, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionGnssConfiguration is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IGnssConfiguration.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -429,6 +469,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionGnssMeasurement, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionGnssMeasurement is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IGnssMeasurementInterface.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -446,6 +489,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionGnssPowerIndication, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionGnssPowerIndication is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IGnssPowerIndication.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -463,6 +509,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionGnssBatching, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionGnssBatching is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IGnssBatching.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -480,6 +529,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionGnssGeofence, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionGnssGeofence is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IGnssGeofence.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -497,6 +549,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionGnssNavigationMessage, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionGnssNavigationMessage is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IGnssNavigationMessageInterface.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -514,6 +569,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionAGnss, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionAGnss is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IAGnss.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -531,6 +589,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionAGnssRil, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionAGnssRil is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IAGnssRil.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -548,6 +609,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionGnssDebug, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionGnssDebug is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IGnssDebug.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -565,6 +629,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionGnssVisibilityControl, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionGnssVisibilityControl is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.visibility_control.IGnssVisibilityControl.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -581,6 +648,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_start, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method start is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -595,6 +665,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_stop, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method stop is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -612,6 +685,9 @@ public interface IGnss extends android.os.IInterface
           _data.writeLong(timeReferenceMs);
           _data.writeInt(uncertaintyMs);
           boolean _status = mRemote.transact(Stub.TRANSACTION_injectTime, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method injectTime is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -627,6 +703,9 @@ public interface IGnss extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(location, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_injectLocation, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method injectLocation is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -642,6 +721,9 @@ public interface IGnss extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(location, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_injectBestLocation, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method injectBestLocation is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -657,6 +739,9 @@ public interface IGnss extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(aidingDataFlags);
           boolean _status = mRemote.transact(Stub.TRANSACTION_deleteAidingData, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method deleteAidingData is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -672,6 +757,9 @@ public interface IGnss extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeTypedObject(options, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setPositionMode, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setPositionMode is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -687,6 +775,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionGnssAntennaInfo, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionGnssAntennaInfo is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.IGnssAntennaInfo.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -704,6 +795,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getExtensionMeasurementCorrections, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getExtensionMeasurementCorrections is unimplemented.");
+          }
           _reply.readException();
           _result = android.hardware.gnss.measurement_corrections.IMeasurementCorrectionsInterface.Stub.asInterface(_reply.readStrongBinder());
         }
@@ -720,6 +814,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_startSvStatus, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method startSvStatus is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -734,6 +831,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_stopSvStatus, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method stopSvStatus is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -748,6 +848,9 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_startNmea, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method startNmea is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -762,12 +865,49 @@ public interface IGnss extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_stopNmea, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method stopNmea is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
           _reply.recycle();
           _data.recycle();
         }
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_setCallback = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -796,6 +936,8 @@ public interface IGnss extends android.os.IInterface
     static final int TRANSACTION_stopSvStatus = (android.os.IBinder.FIRST_CALL_TRANSACTION + 23);
     static final int TRANSACTION_startNmea = (android.os.IBinder.FIRST_CALL_TRANSACTION + 24);
     static final int TRANSACTION_stopNmea = (android.os.IBinder.FIRST_CALL_TRANSACTION + 25);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$gnss$IGnss".replace('$', '.');
@@ -828,6 +970,8 @@ public interface IGnss extends android.os.IInterface
   public void stopSvStatus() throws android.os.RemoteException;
   public void startNmea() throws android.os.RemoteException;
   public void stopNmea() throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
   public static @interface GnssPositionMode {
     public static final int STANDALONE = 0;
     public static final int MS_BASED = 1;

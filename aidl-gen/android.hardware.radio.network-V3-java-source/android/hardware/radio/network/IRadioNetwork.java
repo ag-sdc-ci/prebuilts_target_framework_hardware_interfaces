@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.radio.network-V3-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.network/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.network/3/android/hardware/radio/network/IRadioNetwork.aidl
+ * Using: aidl --lang=java --version=3 --hash=c45c122528c07c449ea08f6eacaace17bb7abc38 --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.radio.network-V3-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.network/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio.network/3/android/hardware/radio/network/IRadioNetwork.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.radio.network;
 /** @hide */
 public interface IRadioNetwork extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 3;
+  public static final String HASH = "c45c122528c07c449ea08f6eacaace17bb7abc38";
   /** Default implementation for IRadioNetwork. */
   public static class Default implements android.hardware.radio.network.IRadioNetwork
   {
@@ -160,6 +168,14 @@ public interface IRadioNetwork extends android.os.IInterface
     {
     }
     @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
+    }
+    @Override
     public android.os.IBinder asBinder() {
       return null;
     }
@@ -197,6 +213,16 @@ public interface IRadioNetwork extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -661,6 +687,8 @@ public interface IRadioNetwork extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -676,6 +704,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getAllowedNetworkTypesBitmap, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getAllowedNetworkTypesBitmap is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -688,6 +719,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getAvailableBandModes, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getAvailableBandModes is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -700,6 +734,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getAvailableNetworks, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getAvailableNetworks is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -712,6 +749,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getBarringInfo, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getBarringInfo is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -724,6 +764,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getCdmaRoamingPreference, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getCdmaRoamingPreference is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -736,6 +779,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getCellInfoList, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getCellInfoList is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -748,6 +794,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getDataRegistrationState, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getDataRegistrationState is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -762,6 +811,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getImsRegistrationState, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getImsRegistrationState is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -774,6 +826,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getNetworkSelectionMode, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getNetworkSelectionMode is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -786,6 +841,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getOperator, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getOperator is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -798,6 +856,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getSignalStrength, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getSignalStrength is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -810,6 +871,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getSystemSelectionChannels, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getSystemSelectionChannels is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -822,6 +886,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getVoiceRadioTechnology, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getVoiceRadioTechnology is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -834,6 +901,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getVoiceRegistrationState, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getVoiceRegistrationState is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -846,6 +916,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_isNrDualConnectivityEnabled, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method isNrDualConnectivityEnabled is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -857,6 +930,9 @@ public interface IRadioNetwork extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_responseAcknowledgement, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method responseAcknowledgement is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -870,6 +946,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeInt(networkTypeBitmap);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setAllowedNetworkTypesBitmap, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setAllowedNetworkTypesBitmap is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -883,6 +962,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeInt(mode);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setBandMode, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setBandMode is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -898,6 +980,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeString(oldPassword);
           _data.writeString(newPassword);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setBarringPassword, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setBarringPassword is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -911,6 +996,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeInt(type);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setCdmaRoamingPreference, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setCdmaRoamingPreference is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -924,6 +1012,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeInt(rate);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setCellInfoListRate, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setCellInfoListRate is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -937,6 +1028,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeInt(indicationFilter);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setIndicationFilter, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setIndicationFilter is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -955,6 +1049,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeIntArray(thresholdsUplinkKbps);
           _data.writeInt(accessNetwork);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setLinkCapacityReportingCriteria, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setLinkCapacityReportingCriteria is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -968,6 +1065,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeBoolean(enable);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setLocationUpdates, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setLocationUpdates is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -980,6 +1080,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setNetworkSelectionModeAutomatic, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setNetworkSelectionModeAutomatic is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -994,6 +1097,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeString(operatorNumeric);
           _data.writeInt(ran);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setNetworkSelectionModeManual, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setNetworkSelectionModeManual is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1007,6 +1113,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeByte(nrDualConnectivityState);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setNrDualConnectivityState, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setNrDualConnectivityState is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1020,6 +1129,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeStrongInterface(radioNetworkResponse);
           _data.writeStrongInterface(radioNetworkIndication);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setResponseFunctions, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setResponseFunctions is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1033,6 +1145,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeTypedArray(signalThresholdInfos, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setSignalStrengthReportingCriteria, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setSignalStrengthReportingCriteria is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1046,6 +1161,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeBoolean(enable);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setSuppServiceNotifications, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setSuppServiceNotifications is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1060,6 +1178,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeBoolean(specifyChannels);
           _data.writeTypedArray(specifiers, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setSystemSelectionChannels, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setSystemSelectionChannels is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1073,6 +1194,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeTypedObject(request, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_startNetworkScan, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method startNetworkScan is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1085,6 +1209,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_stopNetworkScan, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method stopNetworkScan is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1098,6 +1225,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeString(netPin);
           boolean _status = mRemote.transact(Stub.TRANSACTION_supplyNetworkDepersonalization, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method supplyNetworkDepersonalization is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1111,6 +1241,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeInt(usageSetting);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setUsageSetting, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setUsageSetting is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1123,6 +1256,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getUsageSetting, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getUsageSetting is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1136,6 +1272,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeInt(emcModeType);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setEmergencyMode, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setEmergencyMode is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1149,6 +1288,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeTypedObject(request, 0);
           boolean _status = mRemote.transact(Stub.TRANSACTION_triggerEmergencyNetworkScan, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method triggerEmergencyNetworkScan is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1162,6 +1304,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeBoolean(resetScan);
           boolean _status = mRemote.transact(Stub.TRANSACTION_cancelEmergencyNetworkScan, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method cancelEmergencyNetworkScan is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1174,6 +1319,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_exitEmergencyMode, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method exitEmergencyMode is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1187,6 +1335,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeBoolean(enabled);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setNullCipherAndIntegrityEnabled, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setNullCipherAndIntegrityEnabled is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1199,6 +1350,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_isNullCipherAndIntegrityEnabled, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method isNullCipherAndIntegrityEnabled is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1211,6 +1365,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_isN1ModeEnabled, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method isN1ModeEnabled is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1224,6 +1381,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeBoolean(enable);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setN1ModeEnabled, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setN1ModeEnabled is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1236,6 +1396,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_isCellularIdentifierTransparencyEnabled, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method isCellularIdentifierTransparencyEnabled is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1249,6 +1412,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeBoolean(enabled);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setCellularIdentifierTransparencyEnabled, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setCellularIdentifierTransparencyEnabled is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1262,6 +1428,9 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInt(serial);
           _data.writeBoolean(enable);
           boolean _status = mRemote.transact(Stub.TRANSACTION_setSecurityAlgorithmsUpdatedEnabled, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method setSecurityAlgorithmsUpdatedEnabled is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
@@ -1274,10 +1443,47 @@ public interface IRadioNetwork extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(serial);
           boolean _status = mRemote.transact(Stub.TRANSACTION_isSecurityAlgorithmsUpdatedEnabled, _data, null, android.os.IBinder.FLAG_ONEWAY);
+          if (!_status) {
+            throw new android.os.RemoteException("Method isSecurityAlgorithmsUpdatedEnabled is unimplemented.");
+          }
         }
         finally {
           _data.recycle();
         }
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_getAllowedNetworkTypesBitmap = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -1328,6 +1534,8 @@ public interface IRadioNetwork extends android.os.IInterface
     static final int TRANSACTION_setCellularIdentifierTransparencyEnabled = (android.os.IBinder.FIRST_CALL_TRANSACTION + 45);
     static final int TRANSACTION_setSecurityAlgorithmsUpdatedEnabled = (android.os.IBinder.FIRST_CALL_TRANSACTION + 46);
     static final int TRANSACTION_isSecurityAlgorithmsUpdatedEnabled = (android.os.IBinder.FIRST_CALL_TRANSACTION + 47);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$radio$network$IRadioNetwork".replace('$', '.');
@@ -1381,4 +1589,6 @@ public interface IRadioNetwork extends android.os.IInterface
   public void setCellularIdentifierTransparencyEnabled(int serial, boolean enabled) throws android.os.RemoteException;
   public void setSecurityAlgorithmsUpdatedEnabled(int serial, boolean enable) throws android.os.RemoteException;
   public void isSecurityAlgorithmsUpdatedEnabled(int serial) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }

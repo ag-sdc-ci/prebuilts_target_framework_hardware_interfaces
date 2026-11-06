@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: aidl --lang=java --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.thermal-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/thermal/aidl/aidl_api/android.hardware.thermal/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/thermal/aidl/aidl_api/android.hardware.thermal/2/android/hardware/thermal/IThermal.aidl
+ * Using: aidl --lang=java --version=2 --hash=2f49c78011338b42b43d5d0e250d9b520850cc1f --structured --stability=vintf --min_sdk_version=34 -o /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/aidl-gen/android.hardware.thermal-V2-java-source -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/thermal/aidl/aidl_api/android.hardware.thermal/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/aidl/aidl_api/android.hardware.common/2 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/common/fmq/aidl/aidl_api/android.hardware.common.fmq/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/graphics/common/aidl/aidl_api/android.hardware.graphics.common/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/keymaster/aidl/aidl_api/android.hardware.keymaster/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/biometrics/common/aidl/aidl_api/android.hardware.biometrics.common/4 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/secureclock/aidl/aidl_api/android.hardware.security.secureclock/1 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/security/keymint/aidl/aidl_api/android.hardware.security.keymint/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/radio/aidl/aidl_api/android.hardware.radio/3 -I/home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/frameworks/native/aidl/gui /home/shadichy/Documents/bliss/los-21/prebuilts/target/framework/hardware/interfaces/thermal/aidl/aidl_api/android.hardware.thermal/2/android/hardware/thermal/IThermal.aidl
  *
  * DO NOT CHECK THIS FILE INTO A CODE TREE (e.g. git, etc..).
  * ALWAYS GENERATE THIS FILE FROM UPDATED AIDL COMPILER
@@ -10,6 +10,14 @@ package android.hardware.thermal;
 /** @hide */
 public interface IThermal extends android.os.IInterface
 {
+  /**
+   * The version of this interface that the caller is built against.
+   * This might be different from what {@link #getInterfaceVersion()
+   * getInterfaceVersion} returns as that is the version of the interface
+   * that the remote object is implementing.
+   */
+  public static final int VERSION = 2;
+  public static final String HASH = "2f49c78011338b42b43d5d0e250d9b520850cc1f";
   /** Default implementation for IThermal. */
   public static class Default implements android.hardware.thermal.IThermal
   {
@@ -53,6 +61,14 @@ public interface IThermal extends android.os.IInterface
     {
     }
     @Override
+    public int getInterfaceVersion() {
+      return 0;
+    }
+    @Override
+    public String getInterfaceHash() {
+      return "";
+    }
+    @Override
     public android.os.IBinder asBinder() {
       return null;
     }
@@ -90,6 +106,16 @@ public interface IThermal extends android.os.IInterface
     {
       if (code >= android.os.IBinder.FIRST_CALL_TRANSACTION && code <= android.os.IBinder.LAST_CALL_TRANSACTION) {
         data.enforceInterface(DESCRIPTOR);
+      }
+      if (code == TRANSACTION_getInterfaceVersion) {
+        reply.writeNoException();
+        reply.writeInt(getInterfaceVersion());
+        return true;
+      }
+      else if (code == TRANSACTION_getInterfaceHash) {
+        reply.writeNoException();
+        reply.writeString(getInterfaceHash());
+        return true;
       }
       switch (code)
       {
@@ -207,6 +233,8 @@ public interface IThermal extends android.os.IInterface
       {
         mRemote = remote;
       }
+      private int mCachedVersion = -1;
+      private String mCachedHash = "-1";
       @Override public android.os.IBinder asBinder()
       {
         return mRemote;
@@ -223,6 +251,9 @@ public interface IThermal extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getCoolingDevices, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getCoolingDevices is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createTypedArray(android.hardware.thermal.CoolingDevice.CREATOR);
         }
@@ -241,6 +272,9 @@ public interface IThermal extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(type);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getCoolingDevicesWithType, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getCoolingDevicesWithType is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createTypedArray(android.hardware.thermal.CoolingDevice.CREATOR);
         }
@@ -258,6 +292,9 @@ public interface IThermal extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getTemperatures, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getTemperatures is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createTypedArray(android.hardware.thermal.Temperature.CREATOR);
         }
@@ -276,6 +313,9 @@ public interface IThermal extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(type);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getTemperaturesWithType, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getTemperaturesWithType is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createTypedArray(android.hardware.thermal.Temperature.CREATOR);
         }
@@ -293,6 +333,9 @@ public interface IThermal extends android.os.IInterface
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getTemperatureThresholds, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getTemperatureThresholds is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createTypedArray(android.hardware.thermal.TemperatureThreshold.CREATOR);
         }
@@ -311,6 +354,9 @@ public interface IThermal extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeInt(type);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getTemperatureThresholdsWithType, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method getTemperatureThresholdsWithType is unimplemented.");
+          }
           _reply.readException();
           _result = _reply.createTypedArray(android.hardware.thermal.TemperatureThreshold.CREATOR);
         }
@@ -328,6 +374,9 @@ public interface IThermal extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeStrongInterface(callback);
           boolean _status = mRemote.transact(Stub.TRANSACTION_registerThermalChangedCallback, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method registerThermalChangedCallback is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -344,6 +393,9 @@ public interface IThermal extends android.os.IInterface
           _data.writeStrongInterface(callback);
           _data.writeInt(type);
           boolean _status = mRemote.transact(Stub.TRANSACTION_registerThermalChangedCallbackWithType, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method registerThermalChangedCallbackWithType is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -359,6 +411,9 @@ public interface IThermal extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeStrongInterface(callback);
           boolean _status = mRemote.transact(Stub.TRANSACTION_unregisterThermalChangedCallback, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method unregisterThermalChangedCallback is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -375,6 +430,9 @@ public interface IThermal extends android.os.IInterface
           _data.writeStrongInterface(callback);
           _data.writeInt(type);
           boolean _status = mRemote.transact(Stub.TRANSACTION_registerCoolingDeviceChangedCallbackWithType, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method registerCoolingDeviceChangedCallbackWithType is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
@@ -390,12 +448,49 @@ public interface IThermal extends android.os.IInterface
           _data.writeInterfaceToken(DESCRIPTOR);
           _data.writeStrongInterface(callback);
           boolean _status = mRemote.transact(Stub.TRANSACTION_unregisterCoolingDeviceChangedCallback, _data, _reply, 0);
+          if (!_status) {
+            throw new android.os.RemoteException("Method unregisterCoolingDeviceChangedCallback is unimplemented.");
+          }
           _reply.readException();
         }
         finally {
           _reply.recycle();
           _data.recycle();
         }
+      }
+      @Override
+      public int getInterfaceVersion() throws android.os.RemoteException {
+        if (mCachedVersion == -1) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceVersion, data, reply, 0);
+            reply.readException();
+            mCachedVersion = reply.readInt();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedVersion;
+      }
+      @Override
+      public synchronized String getInterfaceHash() throws android.os.RemoteException {
+        if ("-1".equals(mCachedHash)) {
+          android.os.Parcel data = android.os.Parcel.obtain(asBinder());
+          android.os.Parcel reply = android.os.Parcel.obtain();
+          try {
+            data.writeInterfaceToken(DESCRIPTOR);
+            boolean _status = mRemote.transact(Stub.TRANSACTION_getInterfaceHash, data, reply, 0);
+            reply.readException();
+            mCachedHash = reply.readString();
+          } finally {
+            reply.recycle();
+            data.recycle();
+          }
+        }
+        return mCachedHash;
       }
     }
     static final int TRANSACTION_getCoolingDevices = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -409,6 +504,8 @@ public interface IThermal extends android.os.IInterface
     static final int TRANSACTION_unregisterThermalChangedCallback = (android.os.IBinder.FIRST_CALL_TRANSACTION + 8);
     static final int TRANSACTION_registerCoolingDeviceChangedCallbackWithType = (android.os.IBinder.FIRST_CALL_TRANSACTION + 9);
     static final int TRANSACTION_unregisterCoolingDeviceChangedCallback = (android.os.IBinder.FIRST_CALL_TRANSACTION + 10);
+    static final int TRANSACTION_getInterfaceVersion = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777214);
+    static final int TRANSACTION_getInterfaceHash = (android.os.IBinder.FIRST_CALL_TRANSACTION + 16777213);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "android$hardware$thermal$IThermal".replace('$', '.');
@@ -423,4 +520,6 @@ public interface IThermal extends android.os.IInterface
   public void unregisterThermalChangedCallback(android.hardware.thermal.IThermalChangedCallback callback) throws android.os.RemoteException;
   public void registerCoolingDeviceChangedCallbackWithType(android.hardware.thermal.ICoolingDeviceChangedCallback callback, int type) throws android.os.RemoteException;
   public void unregisterCoolingDeviceChangedCallback(android.hardware.thermal.ICoolingDeviceChangedCallback callback) throws android.os.RemoteException;
+  public int getInterfaceVersion() throws android.os.RemoteException;
+  public String getInterfaceHash() throws android.os.RemoteException;
 }
